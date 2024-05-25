@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(1000);
         Runnable runnableTask = () -> {
-            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < 100; i++) {
                 a.offer(generateText("abc", 100));
                 b.offer(generateText("abc", 100));
