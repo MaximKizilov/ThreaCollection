@@ -50,7 +50,7 @@ public class Main {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("Max quantity of " + c + " is " + maxValue);
+            System.out.println("Максимальное количество символа " + c + " составляет " + maxValue);
         });
 
     }
