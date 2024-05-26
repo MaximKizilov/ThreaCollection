@@ -8,19 +8,17 @@ public class Main {
     static ArrayBlockingQueue<String> c = new ArrayBlockingQueue<>(100);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService executor = Executors.newFixedThreadPool(1000);
-        Runnable runnableTask = () -> {
+        Thread textGeneration = new Thread(() ->{
             for (int i = 0; i < 100; i++) {
                 a.offer(generateText("abc", 100));
                 b.offer(generateText("abc", 100));
                 c.offer(generateText("abc", 100));
-
             }
-        };
 
-        Future<?> task = executor.submit(runnableTask);
-        task.get();
-        executor.shutdown();
+    });
+        textGeneration.start();
+        textGeneration.join();
+
         Thread aThread = counter(a, 'a');
         Thread bThread = counter(b, 'b');
         Thread cThread = counter(c, 'c');
